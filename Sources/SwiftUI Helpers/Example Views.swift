@@ -3,9 +3,11 @@
 
 
 import SwiftUI
+import SwiftUIHelpers
 
-struct Example: View {
+struct Geometry: View {
     
+    /// Geometry example capturing the views frame into a state variable
     @State var frameRect: CGRect
     var body: some View {
         Text("Hello")
