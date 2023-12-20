@@ -7,8 +7,7 @@
 
 import SwiftUI
 
-/// An extension that faciliates the capture of view geometry
-public extension View {
+extension View {
     
     /// Maps a View's background frame to a value
     /// - Parameter frame: The target receiving the value of the views frame

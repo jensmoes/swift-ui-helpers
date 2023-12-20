@@ -1,7 +1,7 @@
 //
 //
-//  SwiftUIView.swift
-//  
+//  View+Conditional Modifiers.swift
+//
 //
 //  Created by jensmoes on 12/19/23.
 //
