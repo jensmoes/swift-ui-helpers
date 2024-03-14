@@ -9,7 +9,7 @@ import SwiftUI
 
 extension View {
     
-    /// Maps a View's background frame to a value
+    /// Maps a `View`'s background frame to a value
     /// - Parameter frame: The target receiving the value of the views frame
     /// - Parameter space: The coordinate space to use. Defaults to `global`
     ///

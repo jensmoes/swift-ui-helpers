@@ -25,7 +25,7 @@ extension View {
     /// ```
     ///
     /// - Parameters:
-    ///    - condition: Provde a closure that returns `true` or `false` or an expression such as `x > 2`
+    ///    - condition: Provide a closure that returns `true` or `false` or an expression such as `x > 2`
     ///    - then: The closure to execute if the `conditon` is fulfilled
     ///    - else: Optional alternative closure for when `condition` evaluates `false`
     @ViewBuilder public func `if`<Content: View>(_ condition: @autoclosure () -> Bool, _ then: @escaping (Self) -> Content, else: ((Self) -> Content)? = nil) -> some View {
