@@ -1,0 +1,48 @@
+name: Deploy DocC Documentation to Github Pages
+on:
+  # Runs on pushes targeting the master branch
+  push:
+    branches: ["main"]
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow one concurrent deployment
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+  
+jobs:
+  # One deployment deploy job since we're just deploying
+  deploy:
+    environment:
+      # Must set to this for deploying to GitHub Pages
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: macos-14
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Force Xcode 15.3 
+        run: sudo xcode-select -s "/Applications/Xcode_15.3.app"
+      - name: Build DocC
+        run: |
+          swift package resolve;
+          
+          swift package plugin --allow-writing-to-directory ./docs/  generate-documentation --disable-indexing --output-path ./docs;
+            
+          echo "** Archived documentation**"
+          
+          echo "<script>window.location.href += \"tutorials/table-of-contents\"</script>" > docs/index.html;
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          # Upload only docs directory
+          path: 'docs'
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v1
