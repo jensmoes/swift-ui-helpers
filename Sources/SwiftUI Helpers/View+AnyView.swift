@@ -8,7 +8,7 @@
 import SwiftUI
 
 extension View {
-    /// Returns a `View` as ``AnyView``
+    /// Returns a `View` as [``AnyView``](https://developer.apple.com/documentation/swiftui/anyview)
     public func eraseToAnyView() -> AnyView {
         return AnyView(self)
     }
